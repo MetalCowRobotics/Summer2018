@@ -47,38 +47,19 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 	private static final Logger logger = Logger.getLogger(Robot.class.getName());
-	private static final HamburgerDashboard dashboard = HamburgerDashboard.getInstance();
-	// Define Autonomous Missions
-	final String rightSide = "RightSide";
-	final String leftSide = "LeftSide";
-	final String passLine = "PassLine";
-	final String eitherSide = "eitherSide";
-	final String leftSideOfScale = "leftSideOfScale";
-	final String rightSideOfScale = "rightSideOfScale";
-	final String leftSwitchScale = "LeftSwitchScalePosition";
-	final String rightSwitchScale = "RightSwitchScalePosition";
-	final String leftScaleSwitch = "LeftScaleOrSwitchPosition";
-	final String rightScaleSwitch = "RightScaleOrSwitchPosition";
-	final String middlePosition = "MiddlePosition";
-	final String angledAutonomous = "AngledAutonomous";
-	final String driveTime = "driveTime";
+	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
+
 	MCRCommand robotMission; 
-	SendableChooser<String> autoChooser = new SendableChooser<>();
 	String autoSelected = passLine;
 	
-	Mission autoMission;
-	AutoDrive driveStraight;
-	TurnDegrees turnDegrees;
 	// PowerDistributionPanel pdp;
 	DriverStation driverStation;
-	DriveWithEncoder driveWithEncoder;
 
 	// Systems
 	DriveTrain driveTrain;
 	Intake intake;
 	Elevator elevator;
 	Climber climber;
-	DifferentialDrive autoDrive;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -89,11 +70,11 @@ public class Robot extends IterativeRobot {
 		logger.setLevel(RobotMap.LogLevels.robotClass);
 		logger.entering(this.getClass().getName(), "robotInit");
 		//setup the smartdashboard
-		HamburgerDashboard.getInstance().initializeDashboard();
-		HamburgerDashboard.getInstance().pushStartPositions();
-		HamburgerDashboard.getInstance().pushMCRDriveMode();
-		HamburgerDashboard.getInstance().pushElevatorPID();
-		HamburgerDashboard.getInstance().pushTurnPID();
+		RobotDashboard.getInstance().initializeDashboard();
+		RobotDashboard.getInstance().pushStartPositions();
+		RobotDashboard.getInstance().pushMCRDriveMode();
+		RobotDashboard.getInstance().pushElevatorPID();
+		RobotDashboard.getInstance().pushTurnPID();
 		
 		// Initialize Robot
 		driverStation = DriverStation.getInstance();
@@ -123,8 +104,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit() {
 		logger.entering(this.getClass().getName(), "autonomousInit");
-		autoSelected = autoChooser.getSelected();
-		robotMission = buildMission();
+		robotMission = new PassLineMission();
 		logger.info("Auto selected: " + autoSelected);
 		logger.exiting(getClass().getName(), "autonomousInit");
 	}
@@ -164,7 +144,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testInit() {	
-		driveTrain = DriveTrain.getInstance();
+
 	}
 
 	/**
@@ -172,47 +152,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-		driveTrain.drive();
+
 	}
 	
-	private MCRCommand buildMission() {
-		if (rightSide.equals(autoSelected)) {
-			return new RightSideToRightSwitchMission(getNearSwitch());
-		} else if (leftSide.equals(autoSelected)) {
-			return new SwitchEndMission(Hand.kLeft, getNearSwitch());
-		} else if (eitherSide.equals(autoSelected)) {
-			if (Hand.kRight.equals(getNearSwitch())) {
-				return new RightSideToRightSwitchMission(getNearSwitch());
-			} else {
-				return new RightSideToLeftSwitchMission(getNearSwitch());
-			}
-		} else if (leftSideOfScale.equals(autoSelected)) {
-			return new ScaleEndMission(Hand.kLeft, getScale());
-		} else if (rightSideOfScale.equals(autoSelected)) {
-			return new ScaleEndMission(Hand.kRight, getScale());
-		} else if (rightSwitchScale.equals(autoSelected)) { 
-			return new SwitchOrScaleMySideMission(Hand.kRight, getNearSwitch(), getScale());
-		} else if (leftSwitchScale.equals(autoSelected)) { 
-			return new SwitchOrScaleMySideMission(Hand.kLeft, getNearSwitch(), getScale());
-		} else if (rightScaleSwitch.equals(autoSelected)) { 
-			return new ScaleOrSwitchMission(Hand.kRight, getNearSwitch(), getScale());
-		} else if (leftScaleSwitch.equals(autoSelected)) { 
-			return new ScaleOrSwitchMission(Hand.kLeft, getNearSwitch(), getScale());
-		} else if (angledAutonomous.equals(autoSelected)) {
-			return new AngleSwitchMission(getNearSwitch());
-		} else if (driveTime.equals(autoSelected)) {
-			return new CommandDriveTime(5);
-		} else {
-			return new PassLineMission();
-		}
-	}
-
-	private Hand getNearSwitch() {
-		return driverStation.getGameSpecificMessage().toUpperCase().charAt(0) == 'L' ? Hand.kLeft : Hand.kRight;
-	}
-
-	private Hand getScale() {
-		return driverStation.getGameSpecificMessage().toUpperCase().charAt(1) == 'L' ? Hand.kLeft : Hand.kRight;
-	}
-
 }

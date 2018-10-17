@@ -1,7 +1,7 @@
 package org.usfirst.frc.team4213.commands;
 
 import org.usfirst.frc.team4213.lib14.MCRCommand;
-import org.usfirst.frc.team4213.robot.systems.DriveWithEncoder;
+import org.usfirst.frc.team4213.commands.DriveWithEncoder;
 
 import edu.wpi.first.wpilibj.Timer;
 
@@ -29,7 +29,6 @@ public class CommandDriveStraight implements MCRCommand {
 			timer.start();
 		}
 		thisCommand.run();
-		System.out.println(targetTime + "     " + timer.get());
 	}
 
 	@Override
