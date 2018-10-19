@@ -2,39 +2,16 @@ package org.usfirst.frc.team4213.robot;
 
 import java.util.logging.Logger;
 
-import org.usfirst.frc.team4213.autonomous.LeftPosLeftSwitchEnd;
-import org.usfirst.frc.team4213.autonomous.LeftPosition;
-import org.usfirst.frc.team4213.autonomous.LeftSideScale;
-import org.usfirst.frc.team4213.autonomous.Mission;
-import org.usfirst.frc.team4213.autonomous.PassLine;
-import org.usfirst.frc.team4213.autonomous.RightPosToRigthSwitch;
-import org.usfirst.frc.team4213.autonomous.RightPosToSwitchEitherSide;
-import org.usfirst.frc.team4213.autonomous.RightPosition;
-import org.usfirst.frc.team4213.commands.AngleSwitchMission;
-import org.usfirst.frc.team4213.commands.CommandDriveTime;
 import org.usfirst.frc.team4213.commands.PassLineMission;
-import org.usfirst.frc.team4213.commands.RightSideToLeftSwitchMission;
-import org.usfirst.frc.team4213.commands.RightSideToRightSwitchMission;
-import org.usfirst.frc.team4213.commands.ScaleEndMission;
-import org.usfirst.frc.team4213.commands.ScaleOrSwitchMission;
-import org.usfirst.frc.team4213.commands.SwitchEndMission;
-import org.usfirst.frc.team4213.commands.SwitchOrScaleMySideMission;
 import org.usfirst.frc.team4213.lib14.MCRCommand;
-import org.usfirst.frc.team4213.robot.systems.AutoDrive;
-import org.usfirst.frc.team4213.robot.systems.Climber;
-import org.usfirst.frc.team4213.robot.systems.DriveTrain;
-import org.usfirst.frc.team4213.robot.systems.DriveWithEncoder;
-import org.usfirst.frc.team4213.robot.systems.Elevator;
-import org.usfirst.frc.team4213.robot.systems.Intake;
-import org.usfirst.frc.team4213.robot.systems.TurnDegrees;
+import org.usfirst.frc.team4213.systems.Climber;
+import org.usfirst.frc.team4213.systems.DriveTrain;
+import org.usfirst.frc.team4213.systems.Elevator;
+import org.usfirst.frc.team4213.systems.Intake;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 //import org.usfirst.frc.team4213.robot.systems.AutonomousDriveTrain;
 
@@ -50,7 +27,7 @@ public class Robot extends IterativeRobot {
 	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
 
 	MCRCommand robotMission; 
-	String autoSelected = passLine;
+	String autoSelected = "passLine";
 	
 	// PowerDistributionPanel pdp;
 	DriverStation driverStation;
@@ -78,7 +55,7 @@ public class Robot extends IterativeRobot {
 		
 		// Initialize Robot
 		driverStation = DriverStation.getInstance();
-		CameraServer.getInstance().startAutomaticCapture(0);
+		//CameraServer.getInstance().startAutomaticCapture(0);
 
 		// Initialize Systems
 		driveTrain = DriveTrain.getInstance();

@@ -1,9 +1,9 @@
-package org.usfirst.frc.team4213.robot.systems;
+package org.usfirst.frc.team4213.systems;
 
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team4213.robot.RobotMap;
-import org.usfirst.frc.team4213.robot.controllers.MasterControls;
+import org.usfirst.frc.team4213.systems.MasterControls;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Servo;

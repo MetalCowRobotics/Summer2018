@@ -17,7 +17,7 @@ public class RobotMap {
 		public static final int RANGE_FINDER = 1;// Analog Input/Output
 	}
 
-	public final class Drivetrain {
+	public static final class Drivetrain {
 		public static final double SPRINT_SPEED = 1;
 		public static final double NORMAL_SPEED = 0.7;
 		public static final double CRAWL_SPEED = .5;
@@ -133,12 +133,12 @@ public class RobotMap {
 		public static final double rightTurn = 90;
 		public static final double angleTurn = 45;
 		public static final double rightAngleTurn = 50;
-		public static boolean SecondaryCube = false;
+		public static final boolean SecondaryCube = false;
 	}
 
-	public final class LogLevels {
+	public static final class LogLevels {
 		public static final Level robotClass = Level.WARNING;
-		public static final Level hamburgerDashboardClass = Level.WARNING;
+		public static final Level RobotDashboardClass = Level.WARNING;
 		public static final Level masterControlsClass = Level.WARNING;
 		public static final Level driveTrainClass = Level.FINEST;
 		public static final Level elevatorClass = Level.WARNING;

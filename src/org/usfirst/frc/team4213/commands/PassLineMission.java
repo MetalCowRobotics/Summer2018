@@ -6,8 +6,7 @@ import org.usfirst.frc.team4213.lib14.SequentialCommands;
 import org.usfirst.frc.team4213.robot.RobotMap;
 
 public class PassLineMission implements MCRCommand {
-	private MCRCommand command = new SequentialCommands(new CommandIntakeDeploy(),
-			new CommandDriveStraight(RobotMap.Autonomous.passLineDistance));
+	private MCRCommand command = null;
 
 	@Override
 	public void run() {

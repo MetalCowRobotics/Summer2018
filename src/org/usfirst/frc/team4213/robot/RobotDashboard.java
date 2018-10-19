@@ -3,9 +3,9 @@ package org.usfirst.frc.team4213.robot;
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team4213.lib14.PDController;
-import org.usfirst.frc.team4213.robot.systems.Climber;
-import org.usfirst.frc.team4213.robot.systems.DriveTrain;
-import org.usfirst.frc.team4213.robot.systems.Elevator;
+import org.usfirst.frc.team4213.systems.Climber;
+import org.usfirst.frc.team4213.systems.DriveTrain;
+import org.usfirst.frc.team4213.systems.Elevator;
 
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
@@ -13,16 +13,16 @@ import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class HamburgerDashboard {
-	private static final Logger logger = Logger.getLogger(HamburgerDashboard.class.getName());
-	private static org.usfirst.frc.team4213.robot.HamburgerDashboard ourInstance = new org.usfirst.frc.team4213.robot.HamburgerDashboard();
+public class RobotDashboard {
+	private static final Logger logger = Logger.getLogger(RobotDashboard.class.getName());
+	private static org.usfirst.frc.team4213.robot.RobotDashboard ourInstance = new org.usfirst.frc.team4213.robot.RobotDashboard();
 
-	public static org.usfirst.frc.team4213.robot.HamburgerDashboard getInstance() {
+	public static org.usfirst.frc.team4213.robot.RobotDashboard getInstance() {
 		return ourInstance;
 	}
 
-	private HamburgerDashboard() {
-		logger.setLevel(RobotMap.LogLevels.hamburgerDashboardClass);
+	private RobotDashboard() {
+		logger.setLevel(RobotMap.LogLevels.RobotDashboardClass);
 	}
 
 	public enum AutoMissionOptions {
