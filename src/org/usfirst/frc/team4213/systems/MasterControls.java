@@ -1,8 +1,9 @@
-package org.usfirst.frc.team4213.robot.controllers;
+package org.usfirst.frc.team4213.systems;
 
 import java.util.logging.Logger;
 
 import org.usfirst.frc.team4213.robot.RobotMap;
+import org.usfirst.frc.team4213.lib14.XboxControllerMetalCow;
 
 public class MasterControls {
 	private static final Logger logger = Logger.getLogger(MasterControls.class.getName());

@@ -32,7 +32,7 @@ public class ComponentBuilder {
 			case TALON:
 				return new Talon(motorChannel);
 			case TALONSRX:
-				return new MCR_SRX(motorChannel);
+				return new Talon(motorChannel);
 			default:
 				return null;
 			}

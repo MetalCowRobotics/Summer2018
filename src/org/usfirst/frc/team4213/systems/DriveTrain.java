@@ -1,13 +1,13 @@
-package org.usfirst.frc.team4213.robot.systems;
+package org.usfirst.frc.team4213.systems;
 
 import java.util.logging.Logger;
 
-import org.usfirst.frc.team4213.lib14.MCR_SRX;
+
 import org.usfirst.frc.team4213.lib14.MaxBotixRangeFinder;
 import org.usfirst.frc.team4213.lib14.UtilityMethods;
-import org.usfirst.frc.team4213.robot.HamburgerDashboard;
+import org.usfirst.frc.team4213.robot.RobotDashboard;
 import org.usfirst.frc.team4213.robot.RobotMap;
-import org.usfirst.frc.team4213.robot.controllers.MasterControls;
+import org.usfirst.frc.team4213.systems.MasterControls;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.BuiltInAccelerometer;
@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.Talon;
 
 public class DriveTrain {
 	private static final Logger logger = Logger.getLogger(DriveTrain.class.getName());
@@ -24,10 +25,10 @@ public class DriveTrain {
 	private MasterControls controller = MasterControls.getInstance();
 
 	private static SpeedControllerGroup RightMotor = new SpeedControllerGroup(
-			new MCR_SRX(RobotMap.Drivetrain.RIGHT_MOTOR_CHANNEL1),
-			new MCR_SRX(RobotMap.Drivetrain.RIGHT_MOTOR_CHANNEL2));
+			new Talon(RobotMap.Drivetrain.RIGHT_MOTOR_CHANNEL1),
+			new Talon(RobotMap.Drivetrain.RIGHT_MOTOR_CHANNEL2));
 	private static SpeedControllerGroup LeftMotor = new SpeedControllerGroup(
-			new MCR_SRX(RobotMap.Drivetrain.LEFT_MOTOR_CHANNEL1), new MCR_SRX(RobotMap.Drivetrain.LEFT_MOTOR_CHANNEL2));
+			new Talon(RobotMap.Drivetrain.LEFT_MOTOR_CHANNEL1), new Talon(RobotMap.Drivetrain.LEFT_MOTOR_CHANNEL2));
 
 	private static final Encoder rightEncoder = new Encoder(RobotMap.Drivetrain.RIGHT_ENCODER_1,
 			RobotMap.Drivetrain.RIGHT_ENCODER_2, false, EncodingType.k4X);
@@ -37,12 +38,6 @@ public class DriveTrain {
 
 	private static final ADXRS450_Gyro GYRO = new ADXRS450_Gyro();
 	private static BuiltInAccelerometer accelerometer = new BuiltInAccelerometer();
-
-	private MaxBotixRangeFinder wallSensor = new MaxBotixRangeFinder(RobotMap.Drivetrain.RANGE_FINDER);
-
-	public double wallSensorInches() {
-		return wallSensor.getDistanceInches() - 11.4;
-	}
 
 	private int inverted = 1;
 

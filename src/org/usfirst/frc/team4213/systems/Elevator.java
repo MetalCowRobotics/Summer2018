@@ -1,27 +1,27 @@
-package org.usfirst.frc.team4213.robot.systems;
+package org.usfirst.frc.team4213.systems;
 
 import java.util.logging.Logger;
 
-import org.usfirst.frc.team4213.lib14.MCR_SRX;
 import org.usfirst.frc.team4213.lib14.PDController;
 import org.usfirst.frc.team4213.lib14.UtilityMethods;
-import org.usfirst.frc.team4213.robot.HamburgerDashboard;
+import org.usfirst.frc.team4213.robot.RobotDashboard;
 import org.usfirst.frc.team4213.robot.RobotMap;
-import org.usfirst.frc.team4213.robot.controllers.MasterControls;
+import org.usfirst.frc.team4213.systems.MasterControls;
 
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Talon;
 
 public class Elevator {
 	private static final Logger logger = Logger.getLogger(Elevator.class.getName());
-	private static final HamburgerDashboard dash = HamburgerDashboard.getInstance();
+	private static final RobotDashboard dash = RobotDashboard.getInstance();
 	private static final Elevator instance = new Elevator();
 	private static final MasterControls controller = MasterControls.getInstance();
 
 	private static final SpeedControllerGroup ELEVATOR_MOTOR = new SpeedControllerGroup(
-			new MCR_SRX(RobotMap.Elevator.ELEVATOR_CHANNEL1), new MCR_SRX(RobotMap.Elevator.ELEVATOR_CHANNEL2));
+			new Talon(RobotMap.Elevator.ELEVATOR_CHANNEL1), new Talon(RobotMap.Elevator.ELEVATOR_CHANNEL2));
 	private static final Encoder elevatorEncoder = new Encoder(RobotMap.Elevator.ELEVATOR_ENCODER_1,
 			RobotMap.Elevator.ELEVATOR_ENCODER_2, false, CounterBase.EncodingType.k4X);
 	private DigitalInput topLimit = new DigitalInput(RobotMap.Elevator.LIMIT_SWITCH_TOP);
@@ -61,12 +61,12 @@ public class Elevator {
 			holdPID.set_kD(dash.getElevatorKD()); 
 			System.out.println("^^^^^^ Holding ^^^^^^");
 			setElevatorSpeed(holdPID.calculateAdjustment(getEncoderTics()));
-			HamburgerDashboard.getInstance().pushElevatorPID(holdPID);
+			RobotDashboard.getInstance().pushElevatorPID(holdPID);
 		} else {
 			setElevatorSpeed(controller.getElevatorThrottle());
 			setPositionTics(getEncoderTics());
 		}
-			HamburgerDashboard.getInstance().pushElevatorPID(holdPID);
+			RobotDashboard.getInstance().pushElevatorPID(holdPID);
 	}
 
 	public void setPositionTics(double tics) {
