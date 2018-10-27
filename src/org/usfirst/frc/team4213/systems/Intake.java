@@ -62,17 +62,18 @@ public class Intake {
 				autoIntake = false;
 			}
 		} else {
-			if (controller.isCubeIntake()) {
+			/*if (controller.isCubeIntake()) {
 				powerCubeIntake();
 			} else if (controller.isCubeEject()) {
 				powerCubeEject();
 			} else {
 				powerCubeIdle();
 			}
+			*/
 		}
 
 		// intake angle raise and lower
-		if (controller.isTiltDown()) {
+		/*if (controller.isTiltDown()) {
 			deploy();
 		} else if (controller.isTitltUp()) {
 			INTAKE_ANGLE_MOTOR.set(RobotMap.Intake.RAISE_INTAKE_SPEED);
@@ -87,6 +88,7 @@ public class Intake {
 				stopIntakeDeploy();
 			}
 		}
+		*/
 
 	}
 
@@ -110,7 +112,7 @@ public class Intake {
 	private void powerCubeIntake() {
 		currentIntakeState = IntakeState.IN;
 		if (isCubeSensorSwitchActive()) {
-			controller.intakeRumbleOn();
+			//controller.intakeRumbleOn();
 			powerCubeIdle();
 		} else {
 			LEFT_INTAKE_MOTOR.set(-RobotMap.Intake.INTAKE_SPEED);// .setSpeed(RobotMap.Intake.INTAKE_SPEED);
@@ -131,7 +133,7 @@ public class Intake {
 		LEFT_INTAKE_MOTOR.stopMotor();
 		RIGHT_INTAKE_MOTOR.stopMotor();
 		currentIntakeState = IntakeState.OFF;
-		controller.intakeRumbleOff();
+		//controller.intakeRumbleOff();
 	}
 
 	public boolean isIntakeRunning() {

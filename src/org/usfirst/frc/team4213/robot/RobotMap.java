@@ -1,4 +1,4 @@
-		package org.usfirst.frc.team4213.robot;
+package org.usfirst.frc.team4213.robot;
 
 import java.util.logging.Level;
 
@@ -18,21 +18,9 @@ public class RobotMap {
 	}
 
 	public static final class Drivetrain {
-		public static final double SPRINT_SPEED = 1;
-		public static final double NORMAL_SPEED = 0.7;
-		public static final double CRAWL_SPEED = .5;
-		public static final int[] LEFT_MOTORS = { 3, 4 };
-		public static final int[] RIGHT_MOTORS = { 1, 2 };
-		public static final int LEFT_MOTOR_CHANNEL1 = 3;// CAN
-		public static final int LEFT_MOTOR_CHANNEL2 = 4;// CAN
-		public static final int RIGHT_MOTOR_CHANNEL1 = 1;// CAN
-		public static final int RIGHT_MOTOR_CHANNEL2 = 2;// CAN
-		public static final int WHEEL_DIAMETER = 6;
-		public static final int LEFT_ENCODER_1 = 2; // DIO
-		public static final int LEFT_ENCODER_2 = 3; // DIO
-		public static final int RIGHT_ENCODER_1 = 0; // DIO
-		public static final int RIGHT_ENCODER_2 = 1; // DIO
-		public static final boolean MCR_DRIVE_MODE = true;
+		public static final int LEFT_MOTOR = 2;// PWM
+		public static final int BACK_MOTOR = 1;// PWM
+		public static final int RIGHT_MOTOR = 0;// PWM
 	}
 
 	public final class DriveToWall {
@@ -42,19 +30,11 @@ public class RobotMap {
 		public static final double MAX_ADJUSTMENT = .4;
 	}
 
-	public final class DriveWithEncoder {
-		public static final double TOP_SPEED = .6;
-		public static final double BOTTOM_SPEED = .4;
-		public static final double MAX_ADJUSTMENT = .4;
-		public static final int TICS_PER_ROTATION = 354; // need to try 360
-		public static final double INCHES_PER_ROTATION = Math.PI * RobotMap.Drivetrain.WHEEL_DIAMETER;
-		public static final double SLOW_DOWN_DISTANCE = (12 / INCHES_PER_ROTATION) * TICS_PER_ROTATION;
-	}
 
 	public final class TurnDegrees {
-		public static final double kP = .6; 
-		public static final double kI = 0; 
-		public static final double kD = .05; 
+		public static final double kP = .6;
+		public static final double kI = 0;
+		public static final double kD = .05;
 		public static final double TOP_SPEED = 0;
 		public static final double VARIANCE = .25;
 		public static final double MAX_ADJUSTMENT = .6;
@@ -83,8 +63,8 @@ public class RobotMap {
 	}
 
 	public final class Elevator {
-//		public static final double UP_SPEED = 0.2;// motor is reversed
-//		public static final double DOWN_SPEED = -0.8;// motor is reversed
+		// public static final double UP_SPEED = 0.2;// motor is reversed
+		// public static final double DOWN_SPEED = -0.8;// motor is reversed
 		public static final int ELEVATOR_CHANNEL1 = 5;// CAN
 		public static final int ELEVATOR_CHANNEL2 = 6;// CAN
 		public static final int LIMIT_SWITCH_TOP = 6; // DIO -- VERIFIED via Multimeter
@@ -97,27 +77,29 @@ public class RobotMap {
 		public static final double ELEVATOR_WINCH_DIAMETER = 19 / 8;
 		public static final int TICS_PER_ROTATION = 354; // need to try 360
 		public static final double INCHES_PER_ROTATION = Math.PI * RobotMap.Elevator.ELEVATOR_WINCH_DIAMETER;
-		//public static final double SLOW_DOWN_DISTANCE = (8 / INCHES_PER_ROTATION) * TICS_PER_ROTATION;
-		public static final double SAFTEY_ZONE = (12 / RobotMap.Elevator.INCHES_PER_ROTATION) * RobotMap.Elevator.TICS_PER_ROTATION;
+		// public static final double SLOW_DOWN_DISTANCE = (8 / INCHES_PER_ROTATION) *
+		// TICS_PER_ROTATION;
+		public static final double SAFTEY_ZONE = (12 / RobotMap.Elevator.INCHES_PER_ROTATION)
+				* RobotMap.Elevator.TICS_PER_ROTATION;
 		public static final double SAFE_SPEED = .5;
-		//Elevator hold PID parameters
-		public static final	double kP = -0.01;
-		public static final	double kI = 0;
-		public static final	double kD = 0;
-		public static final	double tolerance = 5;
-		public static final	double outputMin = -.4;
-		public static final	double outputMax = .6;
+		// Elevator hold PID parameters
+		public static final double kP = -0.01;
+		public static final double kI = 0;
+		public static final double kD = 0;
+		public static final double tolerance = 5;
+		public static final double outputMin = -.4;
+		public static final double outputMax = .6;
 		public static final double SafeSpeed = 0.4;
 		public static final double SafeZone = (18 / Elevator.INCHES_PER_ROTATION) * Elevator.TICS_PER_ROTATION;
 		public static final double ELEVATOR_MAX_EXTEND = 72;
 	}
 
 	public final class Climber {
-		public static final int CLIMBER_MOTOR_CHANNEL =  2; // PWM - using Y-cable only needs 1 port
+		public static final int CLIMBER_MOTOR_CHANNEL = 2; // PWM - using Y-cable only needs 1 port
 		public static final int CLIMBER_HELPER_SERVO_CHANNEL = 3;
-		public static final int LIMIT_SWITCH = 8; // DIO 
+		public static final int LIMIT_SWITCH = 8; // DIO
 	}
-	
+
 	public final class Autonomous {
 		public static final double wallBackOff = 13;
 		public static final double middleSwitchDistance = 145;
@@ -128,7 +110,7 @@ public class RobotMap {
 		public static final double rightSideToLeftSideDistance = 84;
 		public static final double switchWallDistance = 100;
 		public static final double distanceToScaleEnd = 30;
-		public static final double distanceToSwitchEnd = 18; //unknown
+		public static final double distanceToSwitchEnd = 18; // unknown
 		public static final double leftTurn = -90;
 		public static final double rightTurn = 90;
 		public static final double angleTurn = 45;

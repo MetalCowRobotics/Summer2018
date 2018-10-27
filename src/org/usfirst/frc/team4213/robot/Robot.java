@@ -4,12 +4,8 @@ import java.util.logging.Logger;
 
 import org.usfirst.frc.team4213.commands.PassLineMission;
 import org.usfirst.frc.team4213.lib14.MCRCommand;
-import org.usfirst.frc.team4213.systems.Climber;
 import org.usfirst.frc.team4213.systems.DriveTrain;
-import org.usfirst.frc.team4213.systems.Elevator;
-import org.usfirst.frc.team4213.systems.Intake;
 
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 
@@ -34,9 +30,6 @@ public class Robot extends IterativeRobot {
 
 	// Systems
 	DriveTrain driveTrain;
-	Intake intake;
-	Elevator elevator;
-	Climber climber;
 
 	/**
 	 * This function is run when the robot is first started up and should be used
@@ -49,7 +42,6 @@ public class Robot extends IterativeRobot {
 		//setup the smartdashboard
 		RobotDashboard.getInstance().initializeDashboard();
 		RobotDashboard.getInstance().pushStartPositions();
-		RobotDashboard.getInstance().pushMCRDriveMode();
 		RobotDashboard.getInstance().pushElevatorPID();
 		RobotDashboard.getInstance().pushTurnPID();
 		
@@ -59,9 +51,6 @@ public class Robot extends IterativeRobot {
 
 		// Initialize Systems
 		driveTrain = DriveTrain.getInstance();
-		elevator = Elevator.getInstance();
-		intake = Intake.getInstance();
-		climber = Climber.getinstance();
 		//calibrate Gyro
 		driveTrain.calibrateGyro();
 		DriverStation.reportWarning("ROBOT SETUP COMPLETE!  Ready to Rumble!", false);
@@ -111,9 +100,6 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		driveTrain.drive();
-		elevator.execute();
-		intake.execute();
-		climber.execute();
 	}
 
 	/**

@@ -40,7 +40,7 @@ public class Climber {
 	}
 
 	public void execute() {
-		if (controller.isClimberActivated()) {
+		/*if (controller.isClimberActivated()) {
 			if (controller.getClimbThrottle() > 0.1) {// push up to feed rope
 				if (SERVO_SWITCH.get()) {
 					climberState = ClimberState.preparing;
@@ -85,6 +85,7 @@ public class Climber {
 		default:
 			logger.info("Im broken ah ah ah ah ah ah ah ah ah ah ah !!!!!!!! tim, come fix me");
 		}
+		*/
 	}
 
 }
