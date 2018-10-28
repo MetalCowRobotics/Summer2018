@@ -28,16 +28,13 @@ public class RobotDashboard {
 	public void initializeDashboard() {
 		// pdp = new PowerDistributionPanel();
 		// CameraServer.getInstance().startAutomaticCapture();
-		SmartDashboard.putBoolean("Auto Position For Second Cube", RobotMap.Autonomous.SecondaryCube);
-	}
-
-	public void pushGyro() {
-		// SmartDashboard.putNumber("Gyro Reading",
-		// DriveTrain.getInstance().getAngle());
 	}
 
 	public boolean doSecondaryMission() {
 		return SmartDashboard.getBoolean("Auto Position For Second Cube", RobotMap.Autonomous.SecondaryCube);
 	}
 
+	public void pushGyro() {
+		//SmartDashboard.putNumber("Gyro Reading", DriveTrain.getInstance().getAngle());
+	}
 }
