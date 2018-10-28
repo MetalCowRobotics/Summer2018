@@ -22,9 +22,9 @@ public class Robot extends IterativeRobot {
 	private static final Logger logger = Logger.getLogger(Robot.class.getName());
 	private static final RobotDashboard dashboard = RobotDashboard.getInstance();
 
-	MCRCommand robotMission; 
+	MCRCommand robotMission;
 	String autoSelected = "passLine";
-	
+
 	// PowerDistributionPanel pdp;
 	DriverStation driverStation;
 
@@ -39,20 +39,18 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		logger.setLevel(RobotMap.LogLevels.robotClass);
 		logger.entering(this.getClass().getName(), "robotInit");
-		//setup the smartdashboard
+		// setup the smartdashboard
 		RobotDashboard.getInstance().initializeDashboard();
 		RobotDashboard.getInstance().pushStartPositions();
-		RobotDashboard.getInstance().pushElevatorPID();
-		RobotDashboard.getInstance().pushTurnPID();
-		
+
 		// Initialize Robot
 		driverStation = DriverStation.getInstance();
-		//CameraServer.getInstance().startAutomaticCapture(0);
+		// CameraServer.getInstance().startAutomaticCapture(0);
 
 		// Initialize Systems
 		driveTrain = DriveTrain.getInstance();
-		//calibrate Gyro
-		driveTrain.calibrateGyro();
+		// calibrate Gyro
+		//driveTrain.calibrateGyro();
 		DriverStation.reportWarning("ROBOT SETUP COMPLETE!  Ready to Rumble!", false);
 	}
 
@@ -74,7 +72,6 @@ public class Robot extends IterativeRobot {
 		logger.info("Auto selected: " + autoSelected);
 		logger.exiting(getClass().getName(), "autonomousInit");
 	}
-
 
 	/**
 	 * This function is called periodically during autonomous
@@ -106,7 +103,7 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during test mode
 	 */
 	@Override
-	public void testInit() {	
+	public void testInit() {
 
 	}
 
@@ -117,5 +114,5 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 
 	}
-	
+
 }
