@@ -56,7 +56,7 @@ public class Elevator {
 			holdPID = new PDController(bottomTics, RobotMap.Elevator.kP, RobotMap.Elevator.kD);
 			firstTime = false;
 		}
-		if (0 == controller.getElevatorThrottle()) {
+		/*if (0 == controller.getElevatorThrottle()) {
 			holdPID.set_kP(dash.getElevatorKP()); 
 			holdPID.set_kD(dash.getElevatorKD()); 
 			System.out.println("^^^^^^ Holding ^^^^^^");
@@ -66,6 +66,7 @@ public class Elevator {
 			setElevatorSpeed(controller.getElevatorThrottle());
 			setPositionTics(getEncoderTics());
 		}
+		*/
 			RobotDashboard.getInstance().pushElevatorPID(holdPID);
 	}
 
@@ -141,7 +142,7 @@ public class Elevator {
 	}
 
 	private void logParameters() {
-		logger.info("Elevator throttle:" + controller.getElevatorThrottle());
+		//logger.info("Elevator throttle:" + controller.getElevatorThrottle());
 		logger.info(
 				"Elevator Up limit: " + this.isElevatorAtTop() + " Elevator Down limit: " + this.isElevatorAtBottom());
 		logger.info("Speed:" + ELEVATOR_MOTOR.get());

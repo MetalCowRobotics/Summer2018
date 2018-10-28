@@ -131,14 +131,6 @@ public class RobotDashboard {
 		return StartPosition.right;
 	}
 
-	public void pushMCRDriveMode() {
-		SmartDashboard.putBoolean("MCR_Drive_Mode", RobotMap.Drivetrain.MCR_DRIVE_MODE);
-	}
-
-	public boolean isMCRDriveMode() {
-		return SmartDashboard.getBoolean("MCR_Drive_Mode", RobotMap.Drivetrain.MCR_DRIVE_MODE);
-	}
-
 	public void pushElevatorPID() {
 		SmartDashboard.putNumber("EkP", RobotMap.Elevator.kP);
 		SmartDashboard.putNumber("EkI", RobotMap.Elevator.kI);
@@ -199,7 +191,7 @@ public class RobotDashboard {
 	}
 	
 	public void pushGyro() {
-		SmartDashboard.putNumber("Gyro Reading", DriveTrain.getInstance().getAngle());
+		//SmartDashboard.putNumber("Gyro Reading", DriveTrain.getInstance().getAngle());
 	}
 	
 	public void pushIntakeEjectSpeed() {
