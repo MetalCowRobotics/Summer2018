@@ -24,7 +24,7 @@ public class RobotMap {
 	}
 
 	public final class Autonomous {
-
+		public static final boolean SecondaryCube = false;
 	}
 
 	public static final class LogLevels {
