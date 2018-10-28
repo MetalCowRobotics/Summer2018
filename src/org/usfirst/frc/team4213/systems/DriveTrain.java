@@ -10,14 +10,11 @@ import edu.wpi.first.wpilibj.drive.KilloughDrive;
 
 public class DriveTrain {
 	private static final Logger logger = Logger.getLogger(DriveTrain.class.getName());
-	private static DriveTrain instance = new DriveTrain();
-	protected KilloughDrive kiwiDrive;
-
 	private MasterControls controller = MasterControls.getInstance();
+	protected KilloughDrive kiwiDrive;
+	private static DriveTrain instance = new DriveTrain();
 
 	// private static final ADXRS450_Gyro GYRO = new ADXRS450_Gyro();
-
-	private int inverted = 1;
 
 	// Singleton
 	protected DriveTrain() {
@@ -35,9 +32,9 @@ public class DriveTrain {
 		kiwiDrive.driveCartesian(controller.getYAxis(), controller.getXAxis(), controller.getRotation());
 	}
 
-	public void stop() {
-		kiwiDrive.stopMotor();
-	}
+	// public void stop() {
+	// kiwiDrive.stopMotor();
+	// }
 
 	public void calibrateGyro() {
 		// DriverStation.reportWarning("Gyro Reading:" + +GYRO.getAngle(), false);
@@ -56,9 +53,5 @@ public class DriveTrain {
 	// public double getAngle() {
 	// // return GYRO.getAngle();
 	// }
-
-	private void invert() {
-		inverted = inverted * -1;
-	}
 
 }
