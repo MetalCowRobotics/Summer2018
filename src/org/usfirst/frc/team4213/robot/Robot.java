@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
 		// Initialize Systems
 		driveTrain = DriveTrain.getInstance();
 		// calibrate Gyro
-		//driveTrain.calibrateGyro();
+		driveTrain.calibrateGyro();
 		DriverStation.reportWarning("ROBOT SETUP COMPLETE!  Ready to Rumble!", false);
 	}
 
