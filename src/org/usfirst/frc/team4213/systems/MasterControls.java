@@ -9,7 +9,8 @@ public class MasterControls {
 	private static final Logger logger = Logger.getLogger(MasterControls.class.getName());
 
 	private static final XboxControllerMetalCow driver = new XboxControllerMetalCow(RobotMap.DriverController.USB_PORT);
-	// private static final XboxControllerMetalCow operator = new XboxControllerMetalCow(RobotMap.OperatorController.USB_PORT);
+	// private static final XboxControllerMetalCow operator = new
+	// XboxControllerMetalCow(RobotMap.OperatorController.USB_PORT);
 
 	private static final MasterControls instance = new MasterControls();
 
@@ -23,15 +24,25 @@ public class MasterControls {
 	}
 
 	public double getYAxis() {
-		return driver.getLY();
+		return deadBand(driver.getLY());
 	}
 
 	public double getXAxis() {
-		return driver.getLX();
+		return deadBand(driver.getLX());
 	}
 
 	public double getRotation() {
-		return driver.getRX();
+		return deadBand(driver.getRX());
 	}
 
+	private double deadBand(double value) {
+		// upper deadBand
+		if (value >= .05)
+			return value;
+		// lower deadBand
+		if (value <= .05)
+			return value;
+		// outside deadBand
+		return 0;
+	}
 }
