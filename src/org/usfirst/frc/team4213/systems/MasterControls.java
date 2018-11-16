@@ -45,4 +45,7 @@ public class MasterControls {
 		// outside deadBand
 		return 0;
 	}
+	public boolean swapMode() {
+		return driver.getXButtonPressed();
+	}
 }
