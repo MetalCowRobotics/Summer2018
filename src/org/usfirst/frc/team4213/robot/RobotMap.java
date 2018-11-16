@@ -21,6 +21,7 @@ public class RobotMap {
 		public static final int LEFT_MOTOR = 2;// PWM
 		public static final int BACK_MOTOR = 1;// PWM
 		public static final int RIGHT_MOTOR = 0;// PWM
+		public static final double maxRotation = .6;
 	}
 
 	public final class Autonomous {

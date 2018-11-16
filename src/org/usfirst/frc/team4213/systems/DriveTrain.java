@@ -2,6 +2,7 @@ package org.usfirst.frc.team4213.systems;
 
 import java.util.logging.Logger;
 
+import org.usfirst.frc.team4213.lib14.UtilityMethods;
 import org.usfirst.frc.team4213.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.Spark;
@@ -9,6 +10,7 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.drive.KilloughDrive;
 
 public class DriveTrain {
+	
 	private static final Logger myLogger = Logger.getLogger(DriveTrain.class.getName());
 	private MasterControls controller = MasterControls.getInstance();
 	protected KilloughDrive kiwiDrive;
@@ -26,10 +28,15 @@ public class DriveTrain {
 	}
 
 	public void drive() {
-		kiwiDrive.driveCartesian(controller.getYAxis(), controller.getXAxis(), controller.getRotation());
+		kiwiDrive.driveCartesian(controller.getYAxis(), controller.getXAxis(), limitRotation(controller.getRotation()));
 	}
-	
+
 	public void stop() {
 		kiwiDrive.stopMotor();
+	}
+
+	private double limitRotation(double rotationSpeed) {
+		double absoluteRotation = Math.min(RobotMap.Drivetrain.maxRotation, Math.abs(rotationSpeed));
+		return UtilityMethods.copySign(rotationSpeed, absoluteRotation);
 	}
 }
